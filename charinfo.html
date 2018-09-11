@@ -47,12 +47,12 @@
        $.each(data.members, function(i, f) {
 		  var armoryLink = "<a href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
           var tblRow = "<tr>" + 
-			  					"<td>" + armoryLink + "</td>" +
-			  					"<td>" + f.character.achievementPoints + "</td>"  +  
-			  					"<td>" + f.character.level + "</td>" + 
-			  					"<td>" + f.character.spec.role + "</td>" + 
-			  					"<td>" + f.character.spec.name + "</td>" +  
-			  					"<td>" + f.rank  + "</td>" + 
+			  					"<th>" + armoryLink + "</th>" +
+			  					"<th>" + f.character.achievementPoints + "</th>"  +  
+			  					"<th>" + f.character.level + "</th>" + 
+			  					"<th>" + f.character.spec.role + "</th>" + 
+			  					"<th>" + f.character.spec.name + "</th>" +  
+			  					"<th>" + f.rank  + "</th>" + 
 						"</tr>"
           $(tblRow).appendTo("#userdata tbody");
 		
@@ -71,16 +71,16 @@
 
 
 
-<div class="wrapper">
+
 <div class="profile">
    <table id= "userdata" border="2" style="width:100%">
   <thead>
-            <th>Name</th>
-            <th>Achievement Points</th>
-            <th>Level</th>
-            <th>Role</th>
-            <th>Specialization</th>
-            <th>Rank</th>
+            <td>Name</td>
+            <td>Achievement Points</td>
+            <td>Level</td>
+            <td>Role</td>
+            <td>Specialization</td>
+            <td>Rank</td>
         </thead>
       <tbody align="center">
        
@@ -89,7 +89,7 @@
    </table>
 
 </div>
-</div>
+
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.js"></script>
