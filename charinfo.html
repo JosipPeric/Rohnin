@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
+
+
+<script>
+
+    $(document).ready(function() {
+
+
+   $.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
+       $.each(data.members, function(i, f) {
+		  
+          var tblRow = "<tr>" + "<td>" + f.character.name + "</td>" +
+          "<td>" + f.character.realm + "</td>" + "<td>" + f.character.achievementPoints + "</td>"  +  "<td>" + f.character.level + "</td>" + "<td>" + f.character.spec.role + "</td>" +"<td>" + f.character.spec.name + "</td>" + "</tr>"
+          $(tblRow).appendTo("#userdata tbody");
+		
+     });
+
+   });
+		
+
+});
+</script>
+</head>
+
+<body>
+
+<div class="wrapper">
+<div class="profile">
+   <table id= "userdata" border="2" style="width:100%">
+  <thead>
+            <th>Name</th>
+            <th>Realm</th>
+            <th>Battle Group</th>
+            <th>Level</th>
+            <th>Role</th>
+            <th>Specialization</th>
+        </thead>
+      <tbody align="center">
+       
+
+       </tbody>
+   </table>
+
+</div>
+</div>
+
+</body>
+</html>
