@@ -1,6 +1,37 @@
 <!doctype html>
 <html>
 <head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+		<script src="js/jquery.min.js"></script>
+		<script src="js/jquery.dropotron.min.js"></script>
+		<script src="js/jquery.scrollgress.min.js"></script>
+		<script src="js/jquery.scrolly.min.js"></script>
+		<script src="js/jquery.slidertron.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-layers.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-xlarge.css" />
+		</noscript>
+		
+		<style>
+				body {
+					background-color: linen;
+					text-align: center;
+				}
+			    th {
+				    font-weight: bolder;
+				    background-color: goldenrod;
+    				padding: 70px 0;
+					text-align: center;
+			    }
+		</style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
 
 
@@ -11,8 +42,8 @@
 
    $.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
        $.each(data.members, function(i, f) {
-		  
-          var tblRow = "<tr>" + "<td>" + f.character.name + "</td>" +
+		  var armoryLink = "<a href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
+          var tblRow = "<tr>" + "<td>" + armoryLink + "</td>" +
           "<td>" + f.character.realm + "</td>" + "<td>" + f.character.achievementPoints + "</td>"  +  "<td>" + f.character.level + "</td>" + "<td>" + f.character.spec.role + "</td>" +"<td>" + f.character.spec.name + "</td>" + "</tr>"
           $(tblRow).appendTo("#userdata tbody");
 		
@@ -30,7 +61,7 @@
 <div class="wrapper">
 <div class="profile">
    <table id= "userdata" border="2" style="width:100%">
-  <thead>
+  <thead align: right>
             <th>Name</th>
             <th>Realm</th>
             <th>Achievement Points</th>
