@@ -26,17 +26,27 @@
 		  $("#includedContent").load("header.html"); 
 		});
 		</script> 
-		
-		
-		
+
 		<style>
 			    thead {
-				    font-weight: bolder;
-				    background-color: goldenrod;
-    				padding: 70px 0;
-					text-align: center;
+				    background-color: palegoldenrod;
+    				padding: 25px 25px 25px 25px;
 			    }
+				tbody {
+					background-color: linen;
+				}
+				nav {
+				color: Black;
+				}
+				#rosterheader {
+					font-weight: bold;
+				}
 		</style>
+</head>
+<body>
+<!-- Header iz header.html filea-->
+<div id="includedContent"></div>
+
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
 <script>
 
@@ -64,23 +74,21 @@
 });
 </script>
 
-</head>
-<body>
-<!-- Header iz header.html filea-->
-<div id="includedContent"></div>
 
 
-
-<div class="wrapper">
+<div>
 <div class="profile">
-   <table id= "userdata" border="2" style="width:100%">
-  <thead>
-            <th>Name</th>
-            <th>Achievement Points</th>
-            <th>Level</th>
-            <th>Role</th>
-            <th>Specialization</th>
-            <th>Rank</th>
+    <table id= "userdata" border="2" style="width:100%">
+  	<thead align="center">
+           <tr id="rosterheader">
+           	<td>Name</td>
+            <td>Achievement Points</td>
+            <td>Level</td>
+            <td>Role</td>
+            <td>Specialization</td>
+            <td>Rank</td>
+           </tr>
+            
         </thead>
       <tbody align="center">
        
