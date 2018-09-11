@@ -1,6 +1,7 @@
 <!doctype html>
+
 <html>
-<head>
+	<head> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
@@ -19,13 +20,17 @@
 			<link rel="stylesheet" href="css/style.css" />
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
+		<script src="jquery.js"></script> 
+		<script> 
+		$(function(){
+		  $("#includedContent").load("header.html"); 
+		});
+		</script> 
+		
+		
 		
 		<style>
-				body {
-					background-color: linen;
-					text-align: center;
-				}
-			    th {
+			    thead {
 				    font-weight: bolder;
 				    background-color: goldenrod;
     				padding: 70px 0;
@@ -33,8 +38,6 @@
 			    }
 		</style>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
-
-
 <script>
 
     $(document).ready(function() {
@@ -43,8 +46,14 @@
    $.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
        $.each(data.members, function(i, f) {
 		  var armoryLink = "<a href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
-          var tblRow = "<tr>" + "<td>" + armoryLink + "</td>" +
-          "<td>" + f.character.realm + "</td>" + "<td>" + f.character.achievementPoints + "</td>"  +  "<td>" + f.character.level + "</td>" + "<td>" + f.character.spec.role + "</td>" +"<td>" + f.character.spec.name + "</td>" + "</tr>"
+          var tblRow = "<tr>" + 
+			  					"<td>" + armoryLink + "</td>" +
+			  					"<td>" + f.character.achievementPoints + "</td>"  +  
+			  					"<td>" + f.character.level + "</td>" + 
+			  					"<td>" + f.character.spec.role + "</td>" + 
+			  					"<td>" + f.character.spec.name + "</td>" +  
+			  					"<td>" + f.rank  + "</td>" + 
+						"</tr>"
           $(tblRow).appendTo("#userdata tbody");
 		
      });
@@ -54,20 +63,24 @@
 
 });
 </script>
-</head>
 
+</head>
 <body>
+<!-- Header iz header.html filea-->
+<div id="includedContent"></div>
+
+
 
 <div class="wrapper">
 <div class="profile">
    <table id= "userdata" border="2" style="width:100%">
-  <thead align: right>
+  <thead>
             <th>Name</th>
-            <th>Realm</th>
             <th>Achievement Points</th>
             <th>Level</th>
             <th>Role</th>
             <th>Specialization</th>
+            <th>Rank</th>
         </thead>
       <tbody align="center">
        
@@ -78,5 +91,8 @@
 </div>
 </div>
 
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 </html>
