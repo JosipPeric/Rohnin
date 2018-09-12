@@ -56,8 +56,52 @@
    $.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
        $.each(data.members, function(i, f) {
 		  var armoryLink = "<a href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
+		  var klasa = f.character.class
+			  switch(klasa){
+				  case 1:
+				  	klasa =  "<img src=images/icons_classes/warrior.jpg>" 
+				  break;
+				  case 2:
+				  	klasa = "<img src=images/icons_classes/paladin.jpg>" 
+				  break;
+				  case 3:
+				  	klasa = "<img src=images/icons_classes/hunter.jpg>" 
+				  break;
+				  case 4:
+				  	klasa = "<img src=images/icons_classes/rogue.jpg>" 
+				  break;
+				  case 5:
+				  	klasa = "<img src=images/icons_classes/priest.jpg>" 
+				  break;
+				  case 6:
+				  	klasa = "<img src=images/icons_classes/deathknight.jpg>" 
+				  break;
+				  case 7:
+				  	klasa = "<img src=images/icons_classes/shaman.jpg>" 
+				  break;
+				  case 8:
+				  	klasa = "<img src=images/icons_classes/mage.jpg>" 
+				  break;
+				  case 9:
+				  	klasa = "<img src=images/icons_classes/warlock.jpg>" 
+				  break;
+				  case 10:
+				  	klasa = "<img src=images/icons_classes/monk.jpg>" 
+				  break;
+				  case 11:
+				  	klasa = "<img src=images/icons_classes/druid.jpg>" 
+				  break;
+				  case 12:
+					klasa = "<img src=images/icons_classes/demonhunter.jpg>"  
+				  break;
+				  default:
+					  klasa = "Unknown";
+				  break;
+			
+		  }
           var tblRow = "<tr>" + 
 			  					"<th>" + armoryLink + "</th>" +
+			  					"<th>" + klasa + "</th>" +
 			  					"<th>" + f.character.achievementPoints + "</th>"  +  
 			  					"<th>" + f.character.level + "</th>" + 
 			  					"<th>" + f.character.spec.role + "</th>" + 
@@ -78,9 +122,10 @@
 
 <div class="profile">
     <table id= "userdata" border="2" style="width:100%" cellspacing="0" cellpadding="0" class="table table-hover">
-  	<thead align="center">
+  	<thead>
            <tr id="rosterheader">
            	<td>Name</td>
+           	<td>Class</td>
             <td>Achievement Points</td>
             <td>Level</td>
             <td>Role</td>
@@ -90,7 +135,9 @@
             
 
         </thead>
-      <tbody align="center"></tbody>
+      <tbody>
+      	<!-- Ovdje ide ispis membera iz JSON-a-->
+      </tbody>
    </table>
 
 </div>
