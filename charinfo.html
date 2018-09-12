@@ -73,7 +73,6 @@
     $(document).ready(function() {	
    $.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
        $.each(data.members, function(i, f) {
-		   counter=counter+1;
 		  var armoryLink = "<a id=ime href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 		  	
 		  var klasa = f.character.class
@@ -310,7 +309,7 @@
 
 
 
-<div class="clusterize">
+<div class="profile">
     <table id= "userdata" style="width:100%" cellspacing="0" cellpadding="0">
   	<thead>
            <tr id="rosterheader">
