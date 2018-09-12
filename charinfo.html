@@ -8,10 +8,6 @@
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" />
 		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 		<script src="js/jquery.min.js"></script>
-		<script src="js/jquery.dropotron.min.js"></script>
-		<script src="js/jquery.scrollgress.min.js"></script>
-		<script src="js/jquery.scrolly.min.js"></script>
-		<script src="js/jquery.slidertron.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
@@ -21,6 +17,9 @@
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
 		<script src="jquery.js"></script> 
+		<link href="./clusterize.css" rel="stylesheet">
+		<script src="./clusterize.min.js"></script>
+		
 		<script> 
 		$(function(){
 		  $("#includedContent").load("header.html"); 
@@ -33,7 +32,10 @@
     			padding: 25px 25px 25px 25px;
 			}
 			tbody {
-				background-color: linen;
+				background-color: #2B1507;
+				font-weight: bold;
+				color:white
+				
 			}
 			nav {
 			color: black;
@@ -41,12 +43,24 @@
 			#rosterheader {
 				font-weight: bold;
 			}
+			#userdata {
+				border-collapse: collapse;
+			}
 			a{
-			color: black;
+				text-decoration: none;
+				outline: 0;
 			}
-			a:hover {
-    		color: green;
+			a:active{
+				text-decoration: none;
+				outline: 0;
+			a:link{
+				text-decoration: none;
+				outline: 0;
 			}
+			table{
+				font-family: Calibri;
+			}
+			
 		</style>
 </head>
 <body>
@@ -55,95 +69,268 @@
 
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"> </script>
 <script>
-
-    $(document).ready(function() {
-
-
+	
+    $(document).ready(function() {	
    $.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
        $.each(data.members, function(i, f) {
-		  var armoryLink = "<a href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
+		   counter=counter+1;
+		  var armoryLink = "<a id=ime href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
+		  	
 		  var klasa = f.character.class
+		  
 			  switch(klasa){
 				  case 1:
 				  	klasa =  "<img src=images/icons_classes/warrior.jpg>" 
+					armoryLink="<a style=color:#C79C6E href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 2:
 				  	klasa = "<img src=images/icons_classes/paladin.jpg>" 
+					armoryLink="<a style=color:#F58CBA href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 3:
 				  	klasa = "<img src=images/icons_classes/hunter.jpg>" 
+					armoryLink="<a style=color:#ABD473 href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 4:
 				  	klasa = "<img src=images/icons_classes/rogue.jpg>" 
+					armoryLink="<a style=color:#FFF569 href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 5:
 				  	klasa = "<img src=images/icons_classes/priest.jpg>" 
+					armoryLink="<a style=color:#FFFFFF href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 6:
 				  	klasa = "<img src=images/icons_classes/deathknight.jpg>" 
+					armoryLink="<a style=color:#C41F3B href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 7:
 				  	klasa = "<img src=images/icons_classes/shaman.jpg>" 
+					armoryLink="<a style=color:#0070DE href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 8:
-				  	klasa = "<img src=images/icons_classes/mage.jpg>" 
+				  	klasa = "<img src=images/icons_classes/mage.jpg>"
+					armoryLink="<a style=color:#40C7EB href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 9:
 				  	klasa = "<img src=images/icons_classes/warlock.jpg>" 
+					armoryLink="<a style=color:#8787ED href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 10:
 				  	klasa = "<img src=images/icons_classes/monk.jpg>" 
+					armoryLink="<a style=color:#00FF96 href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 11:
 				  	klasa = "<img src=images/icons_classes/druid.jpg>" 
+					armoryLink="<a style=color:#FF7D0A href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  case 12:
-					klasa = "<img src=images/icons_classes/demonhunter.jpg>"  
+					klasa = "<img src=images/icons_classes/demonhunter.jpg>"
+					armoryLink="<a style=color:#A330C9 href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>"
 				  break;
 				  default:
 					  klasa = "Unknown";
 				  break;
 			
 		  }
+		    
+		  var rasa = f.character.race;
+		    switch(rasa){
+				  case 1:
+					if(f.character.gender==0){
+				  		rasa =  "<img src=images/icons_races/human_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/human_f.jpg>"
+					}	
+				  break;
+				  case 2:
+					if(f.character.gender==0){
+				  		rasa =  "<img src=images/icons_races/orc_m.jpg>"
+						}
+					else {
+						rasa =  "<img src=images/icons_races/orc_f.jpg>"
+					}	
+				  break;
+				  case 3:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/dwarf_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/dwarf_f.jpg>"
+					}
+				  break;
+				  case 4:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/nightelf_m.jpg>"
+					}
+					else {
+							rasa =  "<img src=images/icons_races/nightelf_f.jpg>"
+					}	
+				  break;
+				  case 5:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/undead_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/undead_f.jpg>"
+					}	
+				  break;
+				  case 6:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/tauren_m.jpg>"
+					}			  		
+					else{
+						rasa =  "<img src=images/icons_races/tauren_f.jpg>"
+					} 
+				  break;
+				  case 7:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/gnome_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/gnome_f.jpg>"
+					}
+				  break;
+				  case 8:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/troll_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/troll_f.jpg>"
+					}
+				  break;
+				  case 9:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/goblin_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/goblin_f.jpg>"
+					}
+				  break;
+				  case 10:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/bloodelf_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/bloodelf_f.jpg>"
+					}				
+				  break;
+				  case 11:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/draenei_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/draenei_f.jpg>"
+					}
+				  break;
+				 case 22:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/worgen_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/worgen_f.jpg>"
+					}
+				  break;
+				  case 24:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/pandaren_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/pandaren_f.jpg>"
+					}
+				  break;
+				  case 25:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/pandaren_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/pandaren_f.jpg>"
+					}
+				  break;
+				  case 27:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/nightborne_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/nightborne_f.jpg>"
+					}
+				  break;
+				  case 28:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/hm_tauren_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/hm_tauren_f.jpg>"
+					}
+				  break;
+				  case 29:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/voidelf_m.jpg>"
+					}
+					else{
+						rasa =  "<img src=images/icons_races/voidelf_f.jpg>"
+					} 
+				  break;
+				  case 30:
+					if(f.character.gender==0){
+						rasa =  "<img src=images/icons_races/lf_draenei_m.jpg>"
+					}
+					else {
+						rasa =  "<img src=images/icons_races/lf_draenei_f.jpg>"
+					}
+				  break;
+				  default:
+					  rasa = "Unknown";
+				  break;
+			}
+		   
           var tblRow = "<tr>" + 
-			  					"<th>" + armoryLink + "</th>" +
-			  					"<th>" + klasa + "</th>" +
-			  					"<th>" + f.character.achievementPoints + "</th>"  +  
-			  					"<th>" + f.character.level + "</th>" + 
-			  					"<th>" + f.character.spec.role + "</th>" + 
-			  					"<th>" + f.character.spec.name + "</th>" +  
-			  					"<th>" + f.rank  + "</th>" + 
+			  					"<td>" + armoryLink + "</td>" +
+			  					"<td>" + f.character.achievementPoints + "</td>"  +  
+			  					"<td>" + f.character.level + "</td>" +
+			  					"<td>" + rasa + "</td>" +
+			  					"<td>" + klasa + "</td>" +
+			  					"<td>" + f.character.spec.name + "</td>" +  
+			  					"<td>" + f.rank  + "</td>" + 
 						"</tr>"
           $(tblRow).appendTo("#userdata tbody");
+		   
+
 		
      });
-
+	 
+	   
    });
+	 
 		
 
 });
+	
 </script>
 
 
 
-<div class="profile">
-    <table id= "userdata" border="2" style="width:100%" cellspacing="0" cellpadding="0" class="table table-hover">
+<div class="clusterize">
+    <table id= "userdata" style="width:100%" cellspacing="0" cellpadding="0">
   	<thead>
            <tr id="rosterheader">
            	<td>Name</td>
-           	<td>Class</td>
-            <td>Achievement Points</td>
+            <td style="width:12%">Achievement Points</td>
             <td>Level</td>
-            <td>Role</td>
+            <td>Race</td>
+          	<td>Class</td>
             <td>Specialization</td>
             <td>Rank</td>
            </tr>
             
 
         </thead>
-      <tbody>
+      <div id="scrollArea" class="clusterize-scroll">
+      <tbody id="contentArea" class="clusterize-content">
+      
       	<!-- Ovdje ide ispis membera iz JSON-a-->
       </tbody>
+		</div>
    </table>
 
 </div>
