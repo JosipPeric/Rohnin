@@ -1,26 +1,20 @@
 <!doctype html>
-
 <html>
 	<head> 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta name="description" content="" />
 		<meta name="keywords" content="" />
 		
-		 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
-		 <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
+		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
+		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
 		
-		 <script src="js/jquery.min.js"></script>
+		<script src="js/jquery.min.js"></script>
 		<script src="js/skel.min.js"></script>
 		<script src="js/skel-layers.min.js"></script>
 		<script src="js/init.js"></script>
-		<noscript>
-			<link rel="stylesheet" href="css/skel.css" />
-			<link rel="stylesheet" href="css/style.css" />
-			<link rel="stylesheet" href="css/style-xlarge.css" />
-		</noscript>
+
 		<script src="jquery.js"></script> 
-		<link href="./clusterize.css" rel="stylesheet">
-		<script src="./clusterize.min.js"></script> 
+
 
 		<style>
 			thead {
@@ -53,6 +47,11 @@
 				text-decoration: none;
 				outline: 0;
 			}
+			a:hover{
+				text-decoration: none;
+				outline: 0;
+				color: black;
+			}
 			table{
 				font-family: Calibri;
 			}
@@ -70,17 +69,18 @@
 				<thead>
 			    <tr id="rosterheader">
 			     	<td>Name</td>
-			      <td style="width:12%">Achievement Points</td>
+			      <td>Ilvl</td>	
 			      <td>Level</td>
 			      <td>Race</td>
 			      <td>Class</td>
 			      <td>Specialization</td>
 			      <td>Rank</td>
+			      <td style="width:12%">Achievement Points</td>
 			    </tr>
 			  </thead>
 		    <tbody id="contentArea" class="clusterize-content">
 		    	<!-- Ovdje ide ispis membera iz JSON-a-->
-					<div id="scrollArea" class="clusterize-scroll"></div>
+					<div id="scrollArea"></div>
 		    </tbody>
 		  </table>
 		</div>
@@ -155,7 +155,7 @@
 						  default:
 							  klasa = "Unknown";
 						  break;
-				  	};
+				  	}
 
 				  	var rasa = f.character.race;
 					switch(rasa){
@@ -303,10 +303,18 @@
 									rasa =  "<img src=images/icons_races/lf_draenei_f.jpg>";
 								}
 						  break;
+						  case 34:
+								if(f.character.gender==0){
+									rasa =  "<img src=images/icons_races/didwarf_m.jpg>";
+								}
+								else {
+									rasa =  "<img src=images/icons_races/didwarf_f.jpg>";
+								}
+						  break;
 						  default:
 							  rasa = "Unknown";
 						  break;
-						};
+						}
 					
 					if (f.character.spec !== undefined) {
 						var spec = f.character.spec.name;	
@@ -315,19 +323,27 @@
 						var spec = "Undefined";
 					}
 					
-				    var tblRow = "<tr>" + 
+					// Dobavljanje Ilvla
+					var ilvlURL = "https://eu.api.battle.net/wow/character/silvermoon/" + f.character.name + "?fields=items&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp";
+					$.getJSON(ilvlURL, function(data_ilvl){
+						var itemLevel = data_ilvl.items.averageItemLevel;
+						// Ispis u tbody
+						var tblRow = "<tr>" + 
 							"<td>" + armoryLink + "</td>" +
-							"<td>" + f.character.achievementPoints + "</td>" + 
+						    "<td>" + itemLevel + "</td>" +
 							"<td>" + f.character.level + "</td>" +
 							"<td>" + rasa + "</td>" +
 							"<td>" + klasa + "</td>" +
 							"<td>" + spec + "</td>" + 
 							"<td>" + f.rank  + "</td>" + 
+							"<td>" + f.character.achievementPoints + "</td>" + 
 						"</tr>";
 
-			    	$(tblRow).appendTo("#userdata tbody");
-			    });
+			    		$(tblRow).appendTo("#userdata tbody");
+			    		});
+						
 					});
+				});
 			  });
 		</script>
 
