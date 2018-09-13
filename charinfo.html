@@ -68,9 +68,9 @@
 		  <table id= "userdata" style="width:100%" cellspacing="0" cellpadding="0">
 				<thead>
 			    <tr id="rosterheader">
-			     	<td>Name</td>
-			      <td>Ilvl</td>	
+			     <td>Name</td>
 			      <td>Level</td>
+			      <td>Ilvl</td>	
 			      <td>Race</td>
 			      <td>Class</td>
 			      <td>Specialization</td>
@@ -327,11 +327,14 @@
 					var ilvlURL = "https://eu.api.battle.net/wow/character/silvermoon/" + f.character.name + "?fields=items&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp";
 					$.getJSON(ilvlURL, function(data_ilvl){
 						var itemLevel = data_ilvl.items.averageItemLevel;
+						if(f.character.level < 120){
+							itemLevel = "-";
+						}
 						// Ispis u tbody
 						var tblRow = "<tr>" + 
 							"<td>" + armoryLink + "</td>" +
-						    "<td>" + itemLevel + "</td>" +
 							"<td>" + f.character.level + "</td>" +
+						    "<td>" + itemLevel + "</td>" +
 							"<td>" + rasa + "</td>" +
 							"<td>" + klasa + "</td>" +
 							"<td>" + spec + "</td>" + 
