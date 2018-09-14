@@ -95,13 +95,13 @@
 
 		<!-- js scripts -->
 		<script>
+		var unsortedTable = [];
+		
 	    $(document).ready(function(){
-	    	var counter;
-
 				$.getJSON('https://eu.api.battle.net/wow/guild/Silvermoon/Rohnin?fields=members&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp', function(data) {
+					var counter=0;
 			    $.each(data.members, function(i, f) {
 				  	var armoryLink = "<a id=ime href=https://worldofwarcraft.com/en-gb/character/silvermoon/" + f.character.name + ">" + f.character.name +  "</a>";
-				  	
 				  	var klasa = f.character.class;
 					switch(klasa){
 						  case 1:
@@ -320,36 +320,56 @@
 						var spec = f.character.spec.name;	
 					}
 					else{
-						var spec = "Undefined";
+						var spec = "-";
 					}
 					
 					// Dobavljanje Ilvla
 					var ilvlURL = "https://eu.api.battle.net/wow/character/silvermoon/" + f.character.name + "?fields=items&locale=en_GB&apikey=zxu9j4nyhqhvdd2mc725g2urvfsm4qdp";
+					
 					$.getJSON(ilvlURL, function(data_ilvl){
 						var itemLevel = data_ilvl.items.averageItemLevel;
 						if(f.character.level < 120){
-							itemLevel = "-";
+							itemLevel = 0;
 						}
-						// Ispis u tbody
-						var tblRow = "<tr>" + 
-							"<td>" + armoryLink + "</td>" +
-							"<td>" + f.character.level + "</td>" +
-						    "<td>" + itemLevel + "</td>" +
-							"<td>" + rasa + "</td>" +
-							"<td>" + klasa + "</td>" +
-							"<td>" + spec + "</td>" + 
-							"<td>" + f.rank  + "</td>" + 
-							"<td>" + f.character.achievementPoints + "</td>" + 
-						"</tr>";
-
-			    		$(tblRow).appendTo("#userdata tbody");
-			    		});
 						
+						
+						if(counter==0){
+							unsortedTable.push([armoryLink, f.character.level, itemLevel, rasa, klasa, spec, f.rank, f.character.achievementPoints]);
+							counter++;
+						}
+						else{
+							for(i=0;i<unsortedTable.length;i++){
+								if(itemLevel >= unsortedTable[i][2]){
+									unsortedTable.splice(i,0, [armoryLink, f.character.level, itemLevel, rasa, klasa, spec, f.rank, f.character.achievementPoints]);
+									counter++;
+									break;
+								}
+							}
+						}
+						
+						if(counter == data.members.length-1){
+							for(i=0; i<counter; i++){
+								// Ispis u tbody
+								var tblRow = "<tr>" + 
+									"<td>" + unsortedTable[i][0] + "</td>" +
+									"<td>" + unsortedTable[i][1] + "</td>" +
+									"<td>" + unsortedTable[i][2] + "</td>" +
+									"<td>" + unsortedTable[i][3] + "</td>" +
+									"<td>" + unsortedTable[i][4] + "</td>" +
+									"<td>" + unsortedTable[i][5] + "</td>" + 
+									"<td>" + unsortedTable[i][6] + "</td>" + 
+									"<td>" + unsortedTable[i][7] + "</td>" + 
+								"</tr>";
+			    				$(tblRow).appendTo("#userdata tbody");
+							}
+						}
+								
 					});
 				});
 			  });
+		});
+			
 		</script>
-
  		<script> 
 			$(function(){
 			  $("#includedContent").load("header.html"); 
