@@ -8,14 +8,6 @@
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" /> 
 		<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css" /> 
 		
-		<script src="js/jquery.min.js"></script>
-		<script src="js/skel.min.js"></script>
-		<script src="js/skel-layers.min.js"></script>
-		<script src="js/init.js"></script>
-
-		<script src="jquery.js"></script> 
-
-
 		<style>
 			thead {
 				background-color: palegoldenrod;
@@ -26,14 +18,9 @@
 				font-weight: bold;
 				color:white
 			}
-			nav {
-				color: black;
-			}
-			#rosterheader {
-				font-weight: bold;
-			}
 			#userdata {
-				border-collapse: collapse;
+				font-family: Calibri;
+  				border-bottom: 1px solid white;
 			}
 			a{
 				text-decoration: none;
@@ -52,9 +39,11 @@
 				outline: 0;
 				color: black;
 			}
-			table{
-				font-family: Calibri;
-			}
+			table tr {
+    			border-bottom: 1px solid black;
+				border-spacing:100em;
+				padding: 50px, 10px, 50px, 10px;
+			}		
 		</style> 
 	</head>
 
@@ -64,10 +53,10 @@
 		<!-- Header iz header.html filea-->
 		<div id="includedContent"></div>
 
-		<div class="clusterize">
-		  <table id= "userdata" style="width:100%" cellspacing="0" cellpadding="0">
+		<div>
+		  <table id= "userdata" style="width:100%">
 				<thead>
-			    <tr id="rosterheader">
+			    <tr>
 			     <td>Name</td>
 			      <td>Level</td>
 			      <td>Ilvl</td>	
@@ -339,9 +328,6 @@
 					
 					
 					$.getJSON(progressURL, function(data_progress){
-						/*if(data_progress.progression.raids[21].bosses[1].heroicKills > 0){ // Uldir, Mother
-							alert("Ubio si: " + data_progress.progression.raids[21].bosses[1].name);
-						}*/
 								if(data_progress.progression.raids[21].bosses[7].heroicKills > 0){ // G'Huun
 									bestkill="HC Uldir 8/8";
 									bestKillFlag = 1;
