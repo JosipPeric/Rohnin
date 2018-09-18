@@ -76,7 +76,7 @@
 			      <td>Specialization</td>
 			      <td>Rank</td>			 
 			      <td style="width:12%">Achievement Points</td>
-			      <td>Progress</td>
+			      <td>Best Progression</td>
 			    </tr>
 			  </thead>
 		    <tbody id="contentArea" class="clusterize-content">
@@ -341,73 +341,110 @@
 					$.getJSON(progressURL, function(data_progress){
 						/*if(data_progress.progression.raids[21].bosses[1].heroicKills > 0){ // Uldir, Mother
 							alert("Ubio si: " + data_progress.progression.raids[21].bosses[1].name);
-						}*/
-								if(data_progress.progression.raids[21].bosses[7].heroicKills > 0){ // G'Huun
-									bestkill="HC Uldir 8/8";
+						}*/		
+								
+								if(data_progress.progression.raids[21].bosses[7].mythicKills > 0){ 
+									bestkill="Mythic Uldir 8/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[6].mythicKills > 0){ 
+									bestkill="Mythic Uldir 7/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[5].mythicKills > 0){ 
+									bestkill="Mythic Uldir 6/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[4].mythicKills > 0){ 
+									bestkill="Mythic Uldir 5/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[3].mythicKills > 0){ 
+									bestkill="Mythic Uldir 4/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[2].mythicKills > 0){ 
+									bestkill="Mythic Uldir 3/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[1].mythicKills > 0){ 
+									bestkill="Mythic Uldir 2/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[0].mythicKills > 0){ 
+									bestkill="Mythic Uldir 1/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[1].mythicKills > 0){ 
+									bestkill="Mythic Uldir 7/8";
+									bestKillFlag = 1;
+								}
+								else if(data_progress.progression.raids[21].bosses[7].heroicKills > 0){ // G'Huun
+									bestkill="Heroic Uldir 8/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[6].heroicKills > 0){ // Mythrax
-									bestkill="HC Uldir 7/8";
+									bestkill="Heroic Uldir 7/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[5].heroicKills > 0){ // Zul
-									bestkill="HC Uldir 6/8";
+									bestkill="Heroic Uldir 6/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[4].heroicKills > 0){ // Vectis
-									bestkill="HC Uldir 5/8";
+									bestkill="Heroic Uldir 5/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[3].heroicKills > 0){ // Zek
-									bestkill="HC Uldir 4/8";
+									bestkill="Heroic Uldir 4/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[2].heroicKills > 0){ // Fetid
-									bestkill="HC Uldir 3/8";
+									bestkill="Heroic Uldir 3/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[1].heroicKills > 0){ // Mother
-									bestkill="HC Uldir 2/8";
+									bestkill="Heroic Uldir 2/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[0].heroicKills > 0){ // Taloc
-									bestkill="HC Uldir 1/8";
+									bestkill="Heroic Uldir 1/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[7].normalKills > 0){
-									bestkill="Uldir 8/8";
+									bestkill="Normal Uldir 8/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[6].normalKills > 0){
-									bestkill="Uldir 7/8";
+									bestkill="Normal Uldir 7/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[5].normalKills > 0){
-									bestkill="Uldir 6/8";
+									bestkill="Normal Uldir 6/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[4].normalKills > 0){
-									bestkill="Uldir 5/8";
+									bestkill="Normal Uldir 5/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[3].normalKills > 0){
-									bestkill="Uldir 4/8";
+									bestkill="Normal Uldir 4/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[2].normalKills > 0){
-									bestkill="Uldir 3/8";
+									bestkill="Normal Uldir 3/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[1].normalKills > 0){
-									bestkill="Uldir 2/8";
+									bestkill="Normal Uldir 2/8";
 									bestKillFlag = 1;
 								}
 								else if(data_progress.progression.raids[21].bosses[0].normalKills > 0){
-									bestkill="Uldir 1/8";
+									bestkill="Normal Uldir 1/8";
 									bestKillFlag = 1;
 								}
 								else{
-									bestkill="/";
+									bestkill="-";
 									//alert("Vidi tu sam unutra: " + bestkill);
 								}
 						
